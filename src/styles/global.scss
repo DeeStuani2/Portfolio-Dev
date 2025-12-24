@@ -28,25 +28,36 @@ img {
   display: block;
 }
 
+/* =========================
+   LAYOUT CONTAINER
+   ========================= */
+
 .app {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 24px clamp(16px, 3vw, 32px) 48px;
+  padding: 18px clamp(16px, 3vw, 32px) 42px;
 }
 
+/* =========================
+   NAV
+   ========================= */
+
 .nav {
-  position: sticky;
-  top: 0;
+  /* Mobile: não-sticky para não atrapalhar rolagem */
+  position: static;
   z-index: 10;
+
   backdrop-filter: blur(12px);
   background: rgba(11, 18, 32, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: var(--radius);
-  padding: 14px 18px;
+
+  padding: 12px 14px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 28px;
+  gap: 10px;
+  margin-bottom: 20px;
+
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
 }
 
@@ -57,11 +68,13 @@ img {
 
 .nav__links {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   margin-left: auto;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
+/* Pills */
 .pill {
   padding: 10px 14px;
   border-radius: 999px;
@@ -78,6 +91,10 @@ img {
   border-color: rgba(97, 218, 251, 0.45);
 }
 
+/* =========================
+   SECTIONS / UI
+   ========================= */
+
 .section {
   padding: var(--section-padding);
   border: 1px solid var(--border);
@@ -93,11 +110,12 @@ img {
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
 .section__title {
   margin: 0;
-  font-size: clamp(24px, 3vw, 30px);
+  font-size: clamp(22px, 2.4vw, 30px);
   letter-spacing: -0.02em;
 }
 
@@ -113,9 +131,10 @@ img {
 }
 
 .grid--two {
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr;
 }
 
+/* Badges */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -133,14 +152,19 @@ img {
   color: var(--muted);
 }
 
+/* Card */
 .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 16px;
-    box-shadow: var(--shadow);
-    height: auto; /* evita altura esticada */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  height: auto;
 }
+
+/* =========================
+   CTA / BUTTONS
+   ========================= */
 
 .cta-row {
   display: flex;
@@ -170,6 +194,10 @@ img {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
+/* =========================
+   TYPO / LIST / DIVIDER
+   ========================= */
+
 .list {
   margin: 0;
   padding-left: 18px;
@@ -182,10 +210,14 @@ img {
   margin: 12px 0;
 }
 
+/* =========================
+   HERO (MOBILE FIRST)
+   ========================= */
+
 .hero {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 30px;
+  grid-template-columns: 1fr;
+  gap: 18px;
   align-items: start;
   width: 100%;
 }
@@ -198,7 +230,7 @@ img {
 
 .hero__title {
   margin: 0;
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(28px, 5vw, 44px);
   letter-spacing: -0.02em;
 }
 
@@ -207,7 +239,7 @@ img {
 }
 
 .hero__headline {
-  font-size: 18px;
+  font-size: 16px;
   margin: 4px 0;
 }
 
@@ -217,11 +249,15 @@ img {
   grid-template-rows: auto auto;
   align-items: start;
   width: 100%;
-  justify-self: center;
 }
 
+.hero__meta-title {
+  margin: 6px 0;
+  font-weight: 700;
+  font-size: 18px;
+}
 
-
+/* FOTO (sem margin-left) */
 .hero__photo {
   position: relative;
   border-radius: var(--radius);
@@ -231,11 +267,12 @@ img {
     #0b1220;
   box-shadow: var(--shadow);
   aspect-ratio: 4 / 5;
-  max-height: 340px;
+  max-height: 360px;
+  width: 100%;
 
-  margin-left: 70px; /* ajuste fino – teste entre 8px e 16px */
+  /* alinhamento correto responsivo */
+  justify-self: center;
 }
-
 
 .hero__photo::after {
   content: '';
@@ -254,14 +291,12 @@ img {
 .hero__stats {
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(2, minmax(160px, 1fr));
+  grid-template-columns: 1fr;
 }
 
-.hero__meta-title {
-  margin: 6px 0;
-  font-weight: 700;
-  font-size: 18px;
-}
+/* =========================
+   EXPERIENCE / PROJECT
+   ========================= */
 
 .experience__head {
   display: flex;
@@ -291,6 +326,10 @@ img {
   display: grid;
   gap: 12px;
 }
+
+/* =========================
+   CAROUSEL
+   ========================= */
 
 .carousel {
   margin-top: 6px;
@@ -334,14 +373,49 @@ img {
   border-color: #61dafb;
 }
 
-@media (max-width: 960px) {
-  .hero {
-    grid-template-columns: 1fr;
+/* =========================
+   BREAKPOINTS (WEB)
+   ========================= */
+
+/* >= 720px: navbar volta a ficar sticky, links ficam mais “desktop” */
+@media (min-width: 720px) {
+  .nav {
+    position: sticky;
+    top: 0;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+  }
+
+  .nav__links {
+    gap: 12px;
+  }
+
+  .hero__headline {
+    font-size: 18px;
+  }
+
+  .grid--two {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+
+  .hero__stats {
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
   }
 }
 
-@media (max-width: 720px) {
-  .nav {
-    position: static;
+/* >= 960px: HERO em 2 colunas (texto + coluna da foto/stats) */
+@media (min-width: 960px) {
+  .hero {
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+  }
+
+  .hero__meta {
+    justify-self: end;
+  }
+
+  .hero__photo {
+    justify-self: end; /* foto vai para a direita sem hacks */
+    max-height: 340px;
   }
 }
